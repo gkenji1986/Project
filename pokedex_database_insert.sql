@@ -1,4 +1,3 @@
---populate types table
 INSERT INTO types (type_name) VALUES ("Normal");
 INSERT INTO types (type_name) VALUES ("Fire");
 INSERT INTO types (type_name) VALUES ("Water");
@@ -15,7 +14,7 @@ INSERT INTO types (type_name) VALUES ("Rock");
 INSERT INTO types (type_name) VALUES ("Ghost");
 INSERT INTO types (type_name) VALUES ("Dragon");
 
---populate pokemon
+
 INSERT INTO pokemon (pokemon_id, name, description) VALUES (1, "Bulbasaur", "A strange seed was planted on its back at birth. This plant sprouts and grows with this Pokemon.");
 INSERT INTO pokemon (pokemon_id, name, description) VALUES (2, "Ivysaur", "When the bulb on its back grows large, it appears to lose the ability to stand on its hind legs.");
 INSERT INTO pokemon (pokemon_id, name, description) VALUES (3, "Venusaur", "The plant blooms when it is absorbing solar energy. It stays on the move to seek sunlight.");
@@ -53,7 +52,7 @@ INSERT INTO pokemon (pokemon_id, name, description) VALUES (149, "Dragonite", "A
 INSERT INTO pokemon (pokemon_id, name, description) VALUES (150, "Mewtwo", "It was created by a scientist after years of horrific gene splicing and DNA engineering experiments.");
 
 
---	populating `routes`
+
 
 INSERT INTO routes (route_name, description) VALUES ("Pallet Town", "A fairly new and quiet town. It's a small and pretty place.");
 INSERT INTO routes (route_name, description) VALUES ("Route 1", "A country road full of greenery and rough paths.");
@@ -65,17 +64,16 @@ INSERT INTO routes (route_name, description) VALUES ("Route 4", "Route 4 is a ro
 INSERT INTO routes (route_name, description) VALUES ("Cerulean City", "A beautiful city with flowing water and blooming flowers.");
 INSERT INTO routes (route_name, description) VALUES ("Route 5", "A small pathway that is divided into three vertical parts.");
 INSERT INTO routes (route_name, description) VALUES ("Vermillion City", "A southern city that is bathed in orange by the setting sun.");
-INSERT INTO routes (route_name, description) VALUES ("Route 6", "Medium sized pathway that curves around to form a "S" shape that connects Saffron City and Vermillion City.");
+INSERT INTO routes (route_name, description) VALUES ("Route 6", "Medium sized pathway that curves around to form a S shape that connects Saffron City and Vermillion City.");
 INSERT INTO routes (route_name, description) VALUES ("Lavender Town", "A small town covered in a beautiful hue of purple.");
 INSERT INTO routes (route_name, description) VALUES ("Route 7", "Short east-west route, serving only as a brief separation between Saffron City and Celadon City.");
 INSERT INTO routes (route_name, description) VALUES ("Celadon City", "A rich, rainbow colored city where people and Pokémon gather.");
 INSERT INTO routes (route_name, description) VALUES ("Fuchsia City", "A historic village that has become new.");
 INSERT INTO routes (route_name, description) VALUES ("Saffron City", "The biggest city in Kanto, shining with a golden light.");
 INSERT INTO routes (route_name, description) VALUES ("Cinnabar Island", "A town used to be here until it was swept away by an eruption.");
-INSERT INTO routes (route_name, description) VALUES ("Saffron City", "The biggest city in Kanto, shining with a golden light.");
 INSERT INTO routes (route_name, description) VALUES ("Viridian Forest", "The deep and sprawling forest is said to be a natural maze as many people get lost inside.");
 
---	Populating `moves`
+
 
 INSERT INTO moves (move_name, move_type, move_base_damage, move_pp, description) VALUES ("Tackle", (SELECT type_id FROM `types` WHERE type_name = "Normal"), 50, 35, "Basic attack.");
 INSERT INTO moves (move_name, move_type, move_base_damage, move_pp, description) VALUES ("Body Slam", (SELECT type_id FROM `types` WHERE type_name = "Normal"), 85, 15, "May paralyze opponent");
@@ -92,20 +90,20 @@ INSERT INTO moves (move_name, move_type, move_base_damage, move_pp, description)
 INSERT INTO moves (move_name, move_type, move_base_damage, move_pp, description) VALUES ("Twineedle", (SELECT type_id FROM `types` WHERE type_name = "Bug"), 25, 20 , "Hits twice in one turn. May poison opponent.");
 
 
---	populating `trainers`
+
 
 INSERT INTO trainer(trainer_name, description) VALUES ("Bug Catcher", "Young children in hats carrying nets.");
 INSERT INTO trainer(trainer_name, description) VALUES ("Lass", "Young girls in school uniforms.");
 INSERT INTO trainer (trainer_name, description) VALUES ("Youngster", "Young boys wearing caps and shorts.");
 INSERT INTO trainer(trainer_name, description) VALUES ("Blackbelt", "They are young men wearing a karate uniform while striking a battle pose.");
-INSERT INTO trainer(trainer_name, description) VALUES ("Biker", "They are rowdy young men riding "bikes", although they appear to be motorcycles.");
+INSERT INTO trainer(trainer_name, description) VALUES ("Biker", "They are rowdy young men riding bikes, although they appear to be motorcycles.");
 INSERT INTO trainer (trainer_name, description) VALUES ("Sailor", "They are men wearing a sailor's uniform, flexing their muscles.");
 INSERT INTO trainer (trainer_name, description) VALUES ("Lorelei", "Lorelei is the first Trainer of the Elite Four. She is known for her logical, calculated, and cool style of battling.");
 INSERT INTO trainer(trainer_name, description) VALUES ("Bruno", "Bruno is a member of the Elite Four. He raises Fighting-type Pokémon, living with them and training with them.");
 INSERT INTO trainer(trainer_name, description) VALUES ("Agatha", "Agatha is a member of the Elite Four, and the oldest one to date. As such, she serves as an inspiration for senior Pokémon Trainers all around the region.");
 INSERT INTO trainer (trainer_name, description) VALUES ("Lance", "Lance is the fourth and final member of the Elite Four. He is known as a cool and heroic Trainer.");
 
---	Populating `trainer_pokemon`
+
 
 INSERT INTO trainer_pokemon (trainer_pokemon_id, trainer_pokemon_type_id) VALUES ((SELECT trainer_id FROM trainer WHERE trainer_name = "Bug Catcher"), (SELECT type_id FROM types WHERE type_name = "Bug"));
 INSERT INTO trainer_pokemon (trainer_pokemon_id, trainer_pokemon_type_id) VALUES ((SELECT trainer_id FROM trainer WHERE trainer_name = "Bug Catcher"), (SELECT type_id FROM types WHERE type_name = "Poison"));
@@ -124,20 +122,19 @@ INSERT INTO trainer_pokemon (trainer_pokemon_id, trainer_pokemon_type_id) VALUES
 INSERT INTO trainer_pokemon (trainer_pokemon_id, trainer_pokemon_type_id) VALUES ((SELECT trainer_id FROM trainer WHERE trainer_name = "Agatha"), (SELECT type_id FROM types WHERE type_name = "Ghost"));
 INSERT INTO trainer_pokemon (trainer_pokemon_id, trainer_pokemon_type_id) VALUES ((SELECT trainer_id FROM trainer WHERE trainer_name = "Lance"), (SELECT type_id FROM types WHERE type_name = "Dragon"));
 
---	Prepopulating `pokemon_routes`
+
 
 INSERT INTO pokemon_routes (pid, rid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Rattata"), (SELECT route_id FROM routes WHERE route_name = "Route 1"));
 INSERT INTO pokemon_routes (pid, rid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Rattata"), (SELECT route_id FROM routes WHERE route_name = "Route 2"));
-INSERT INTO pokemon_routes (pid, rid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Caterpie"), (SELECT route_id FROM routes WHERE route_name = "Varidian Forest"));
+INSERT INTO pokemon_routes (pid, rid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Caterpie"), (SELECT route_id FROM routes WHERE route_name = "Viridian Forest"));
 INSERT INTO pokemon_routes (pid, rid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Weedle"), (SELECT route_id FROM routes WHERE route_name = "Route 2"));
 INSERT INTO pokemon_routes (pid, rid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Weedle"), (SELECT route_id FROM routes WHERE route_name = "Viridian Forest"));
 INSERT INTO pokemon_routes (pid, rid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Pidgey"), (SELECT route_id FROM routes WHERE route_name = "Route 1"));
 INSERT INTO pokemon_routes (pid, rid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Pidgey"), (SELECT route_id FROM routes WHERE route_name = "Route 2"));
 INSERT INTO pokemon_routes (pid, rid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Pidgey"), (SELECT route_id FROM routes WHERE route_name = "Route 3"));
-INSERT INTO pokemon_routes (pid, rid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Spearow"), (SELECT route_id FROM routes WHERE route_name = "Route 3"));
-INSERT INTO pokemon_routes (pid, rid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Metapod"), (SELECT route_id FROM routes WHERE route_name = "Varidian Forest"));
-INSERT INTO pokemon_routes (pid, rid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Kakuna"), (SELECT route_id FROM routes WHERE route_name = "Varidian Forest"));
-INSERT INTO pokemon_routes (pid, rid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Pikachu"), (SELECT route_id FROM routes WHERE route_name = "Varidian Forest"));
+INSERT INTO pokemon_routes (pid, rid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Metapod"), (SELECT route_id FROM routes WHERE route_name = "Viridian Forest"));
+INSERT INTO pokemon_routes (pid, rid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Kakuna"), (SELECT route_id FROM routes WHERE route_name = "Viridian Forest"));
+INSERT INTO pokemon_routes (pid, rid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Pikachu"), (SELECT route_id FROM routes WHERE route_name = "Viridian Forest"));
 INSERT INTO pokemon_routes (pid, rid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Sandshrew"), (SELECT route_id FROM routes WHERE route_name = "Route 4"));
 INSERT INTO pokemon_routes (pid, rid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Mankey"), (SELECT route_id FROM routes WHERE route_name = "Route 5"));
 INSERT INTO pokemon_routes (pid, rid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Mankey"), (SELECT route_id FROM routes WHERE route_name = "Route 6"));
@@ -150,7 +147,7 @@ INSERT INTO pokemon_routes (pid, rid) VALUES ((SELECT pokemon_id FROM pokemon WH
 INSERT INTO pokemon_routes (pid, rid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Dragonair"), (SELECT route_id FROM routes WHERE route_name = "Cerulean City"));
 INSERT INTO pokemon_routes (pid, rid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Mewtwo"), (SELECT route_id FROM routes WHERE route_name = "Cerulean City"));
 
---	populate `pokemon_moves`
+
 
 INSERT INTO pokemon_moves (mid, pid) VALUES ((SELECT move_id FROM moves WHERE move_name = "Body Slam"), (SELECT pokemon_id FROM pokemon WHERE name = "Bulbasaur"));
 INSERT INTO pokemon_moves (mid, pid) VALUES ((SELECT move_id FROM moves WHERE move_name = "Tackle"), (SELECT pokemon_id FROM pokemon WHERE name = "Bulbasaur"));
@@ -162,14 +159,12 @@ INSERT INTO pokemon_moves (mid, pid) VALUES ((SELECT move_id FROM moves WHERE mo
 INSERT INTO pokemon_moves (mid, pid) VALUES ((SELECT move_id FROM moves WHERE move_name = "Body Slam"), (SELECT pokemon_id FROM pokemon WHERE name = "Squirtle"));
 INSERT INTO pokemon_moves (mid, pid) VALUES ((SELECT move_id FROM moves WHERE move_name = "Bubble"), (SELECT pokemon_id FROM pokemon WHERE name = "Squirtle"));
 INSERT INTO pokemon_moves (mid, pid) VALUES ((SELECT move_id FROM moves WHERE move_name = "Tackle"), (SELECT pokemon_id FROM pokemon WHERE name = "Caterpie"));
-INSERT INTO pokemon_moves (mid, pid) VALUES ((SELECT move_id FROM moves WHERE move_name = "Tackle"), (SELECT pokemon_id FROM pokemon WHERE name = "Caterpie"));
 INSERT INTO pokemon_moves (mid, pid) VALUES ((SELECT move_id FROM moves WHERE move_name = "Tackle"), (SELECT pokemon_id FROM pokemon WHERE name = "Metapod"));
 INSERT INTO pokemon_moves (mid, pid) VALUES ((SELECT move_id FROM moves WHERE move_name = "Tackle"), (SELECT pokemon_id FROM pokemon WHERE name = "Kakuna"));
 INSERT INTO pokemon_moves (mid, pid) VALUES ((SELECT move_id FROM moves WHERE move_name = "Twineedle"), (SELECT pokemon_id FROM pokemon WHERE name = "Kakuna"));
 INSERT INTO pokemon_moves (mid, pid) VALUES ((SELECT move_id FROM moves WHERE move_name = "Gust"), (SELECT pokemon_id FROM pokemon WHERE name = "Pidgey"));
 INSERT INTO pokemon_moves (mid, pid) VALUES ((SELECT move_id FROM moves WHERE move_name = "Tackle"), (SELECT pokemon_id FROM pokemon WHERE name = "Rattata"));
 INSERT INTO pokemon_moves (mid, pid) VALUES ((SELECT move_id FROM moves WHERE move_name = "Body Slam"), (SELECT pokemon_id FROM pokemon WHERE name = "Rattata"));
-INSERT INTO pokemon_moves (mid, pid) VALUES ((SELECT move_id FROM moves WHERE move_name = "Gust"), (SELECT pokemon_id FROM pokemon WHERE name = "Spearow"));
 INSERT INTO pokemon_moves (mid, pid) VALUES ((SELECT move_id FROM moves WHERE move_name = "Karate Chop"), (SELECT pokemon_id FROM pokemon WHERE name = "Mankey"));
 INSERT INTO pokemon_moves (mid, pid) VALUES ((SELECT move_id FROM moves WHERE move_name = "Body Slam"), (SELECT pokemon_id FROM pokemon WHERE name = "Mankey"));
 INSERT INTO pokemon_moves (mid, pid) VALUES ((SELECT move_id FROM moves WHERE move_name = "Blizzard"), (SELECT pokemon_id FROM pokemon WHERE name = "Articuno"));
@@ -179,7 +174,7 @@ INSERT INTO pokemon_moves (mid, pid) VALUES ((SELECT move_id FROM moves WHERE mo
 INSERT INTO pokemon_moves (mid, pid) VALUES ((SELECT move_id FROM moves WHERE move_name = "Acid"), (SELECT pokemon_id FROM pokemon WHERE name = "Gastly"));
 
 
---	populate `pokemon_evolution`
+
 
 INSERT INTO pokemon_evolutions (pokemon_evolution_id, pokemon_predecessor_id) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Ivysaur"), (SELECT pokemon_id FROM pokemon WHERE name = "Bulbasaur"));
 INSERT INTO pokemon_evolutions (pokemon_evolution_id, pokemon_predecessor_id) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Venusaur"), (SELECT pokemon_id FROM pokemon WHERE name = "Ivysaur"));
@@ -202,57 +197,57 @@ INSERT INTO pokemon_evolutions (pokemon_evolution_id, pokemon_predecessor_id) VA
 INSERT INTO pokemon_evolutions (pokemon_evolution_id, pokemon_predecessor_id) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Dragonair"), (SELECT pokemon_id FROM pokemon WHERE name = "Dratini"));
 INSERT INTO pokemon_evolutions (pokemon_evolution_id, pokemon_predecessor_id) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Dragonite"), (SELECT pokemon_id FROM pokemon WHERE name = "Dragonair"));
 
---	populate `pokemon_types`
 
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Bulbasaur"), (SELECT type_id FROM types WHERE type_name = "Grass"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Bulbasaur"), (SELECT type_id FROM types WHERE type_name = "Poison"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Ivysaur"), (SELECT type_id FROM types WHERE type_name = "Grass"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Ivysaur"), (SELECT type_id FROM types WHERE type_name = "Poison"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Venusaur"), (SELECT type_id FROM types WHERE type_name = "Grass"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Venusaur"), (SELECT type_id FROM types WHERE type_name = "Poison"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Charmander"), (SELECT type_id FROM types WHERE type_name = "Fire"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Charmeleon"), (SELECT type_id FROM types WHERE type_name = "Fire"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Charizard"), (SELECT type_id FROM types WHERE type_name = "Fire"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Squirtle"), (SELECT type_id FROM types WHERE type_name = "Water"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Wartortle"), (SELECT type_id FROM types WHERE type_name = "Water"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Blastoise"), (SELECT type_id FROM types WHERE type_name = "Water"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Caterpie"), (SELECT type_id FROM types WHERE type_name = "Bug"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Metapod"), (SELECT type_id FROM types WHERE type_name = "Bug"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Butterfree"), (SELECT type_id FROM types WHERE type_name = "Bug"))
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Butterfree"), (SELECT type_id FROM types WHERE type_name = "Flying"))
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Weedle"), (SELECT type_id FROM types WHERE type_name = "Bug"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Weedle"), (SELECT type_id FROM types WHERE type_name = "Poison"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Kakuna"), (SELECT type_id FROM types WHERE type_name = "Bug"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Kakuna"), (SELECT type_id FROM types WHERE type_name = "Poison"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Beedrill"), (SELECT type_id FROM types WHERE type_name = "Bug"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Beedrill"), (SELECT type_id FROM types WHERE type_name = "Poison"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Pidgey"), (SELECT type_id FROM types WHERE type_name = "Normal"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Pidgey"), (SELECT type_id FROM types WHERE type_name = "Flying"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Pidgeotto"), (SELECT type_id FROM types WHERE type_name = "Normal"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Pidgeotto"), (SELECT type_id FROM types WHERE type_name = "Flying"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Pidgeot"), (SELECT type_id FROM types WHERE type_name = "Normal"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Pidgeot"), (SELECT type_id FROM types WHERE type_name = "Flying"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Rattata"), (SELECT type_id FROM types WHERE type_name = "Normal"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Raticate"), (SELECT type_id FROM types WHERE type_name = "Normal"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Pikachu"), (SELECT type_id FROM types WHERE type_name = "Electric"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Raichu"), (SELECT type_id FROM types WHERE type_name = "Electric"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Sandshrew"), (SELECT type_id FROM types WHERE type_name = "Ground"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Sandslash"), (SELECT type_id FROM types WHERE type_name = "Ground"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Onix"), (SELECT type_id FROM types WHERE type_name = "Ground"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Onix"), (SELECT type_id FROM types WHERE type_name = "Rock"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Mankey"), (SELECT type_id FROM types WHERE type_name = "Fighting"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Primape"), (SELECT type_id FROM types WHERE type_name = "Fighting"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Gastly"), (SELECT type_id FROM types WHERE type_name = "Ghost"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Gastly"), (SELECT type_id FROM types WHERE type_name = "Poison"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Haunter"), (SELECT type_id FROM types WHERE type_name = "Ghost"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Haunter"), (SELECT type_id FROM types WHERE type_name = "Poison"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Gengar"), (SELECT type_id FROM types WHERE type_name = "Ghost"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Gengar"), (SELECT type_id FROM types WHERE type_name = "Poison"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Articuno"), (SELECT type_id FROM types WHERE type_name = "Ice"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Articuno"), (SELECT type_id FROM types WHERE type_name = "Flying"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Dratini"), (SELECT type_id FROM types WHERE type_name = "Dragon"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Dragonair"), (SELECT type_id FROM types WHERE type_name = "Dragon"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Dragonite"), (SELECT type_id FROM types WHERE type_name = "Dragon"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Dragonite"), (SELECT type_id FROM types WHERE type_name = "Flying"));
-INSERT INTO pokemon_types (pid, tid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Mewtwo"), (SELECT type_id FROM types WHERE type_name = "Psychic"));
+
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Bulbasaur"), (SELECT type_id FROM types WHERE type_name = "Grass"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Bulbasaur"), (SELECT type_id FROM types WHERE type_name = "Poison"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Ivysaur"), (SELECT type_id FROM types WHERE type_name = "Grass"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Ivysaur"), (SELECT type_id FROM types WHERE type_name = "Poison"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Venusaur"), (SELECT type_id FROM types WHERE type_name = "Grass"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Venusaur"), (SELECT type_id FROM types WHERE type_name = "Poison"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Charmander"), (SELECT type_id FROM types WHERE type_name = "Fire"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Charmeleon"), (SELECT type_id FROM types WHERE type_name = "Fire"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Charizard"), (SELECT type_id FROM types WHERE type_name = "Fire"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Squirtle"), (SELECT type_id FROM types WHERE type_name = "Water"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Wartortle"), (SELECT type_id FROM types WHERE type_name = "Water"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Blastoise"), (SELECT type_id FROM types WHERE type_name = "Water"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Caterpie"), (SELECT type_id FROM types WHERE type_name = "Bug"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Metapod"), (SELECT type_id FROM types WHERE type_name = "Bug"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Butterfree"), (SELECT type_id FROM types WHERE type_name = "Bug"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Butterfree"), (SELECT type_id FROM types WHERE type_name = "Flying"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Weedle"), (SELECT type_id FROM types WHERE type_name = "Bug"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Weedle"), (SELECT type_id FROM types WHERE type_name = "Poison"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Kakuna"), (SELECT type_id FROM types WHERE type_name = "Bug"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Kakuna"), (SELECT type_id FROM types WHERE type_name = "Poison"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Beedrill"), (SELECT type_id FROM types WHERE type_name = "Bug"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Beedrill"), (SELECT type_id FROM types WHERE type_name = "Poison"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Pidgey"), (SELECT type_id FROM types WHERE type_name = "Normal"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Pidgey"), (SELECT type_id FROM types WHERE type_name = "Flying"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Pidgeotto"), (SELECT type_id FROM types WHERE type_name = "Normal"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Pidgeotto"), (SELECT type_id FROM types WHERE type_name = "Flying"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Pidgeot"), (SELECT type_id FROM types WHERE type_name = "Normal"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Pidgeot"), (SELECT type_id FROM types WHERE type_name = "Flying"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Rattata"), (SELECT type_id FROM types WHERE type_name = "Normal"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Raticate"), (SELECT type_id FROM types WHERE type_name = "Normal"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Pikachu"), (SELECT type_id FROM types WHERE type_name = "Electric"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Raichu"), (SELECT type_id FROM types WHERE type_name = "Electric"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Sandshrew"), (SELECT type_id FROM types WHERE type_name = "Ground"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Sandslash"), (SELECT type_id FROM types WHERE type_name = "Ground"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Onix"), (SELECT type_id FROM types WHERE type_name = "Ground"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Onix"), (SELECT type_id FROM types WHERE type_name = "Rock"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Mankey"), (SELECT type_id FROM types WHERE type_name = "Fighting"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Primape"), (SELECT type_id FROM types WHERE type_name = "Fighting"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Gastly"), (SELECT type_id FROM types WHERE type_name = "Ghost"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Gastly"), (SELECT type_id FROM types WHERE type_name = "Poison"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Haunter"), (SELECT type_id FROM types WHERE type_name = "Ghost"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Haunter"), (SELECT type_id FROM types WHERE type_name = "Poison"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Gengar"), (SELECT type_id FROM types WHERE type_name = "Ghost"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Gengar"), (SELECT type_id FROM types WHERE type_name = "Poison"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Articuno"), (SELECT type_id FROM types WHERE type_name = "Ice"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Articuno"), (SELECT type_id FROM types WHERE type_name = "Flying"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Dratini"), (SELECT type_id FROM types WHERE type_name = "Dragon"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Dragonair"), (SELECT type_id FROM types WHERE type_name = "Dragon"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Dragonite"), (SELECT type_id FROM types WHERE type_name = "Dragon"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Dragonite"), (SELECT type_id FROM types WHERE type_name = "Flying"));
+INSERT INTO pokemon_types (pid, ptid) VALUES ((SELECT pokemon_id FROM pokemon WHERE name = "Mewtwo"), (SELECT type_id FROM types WHERE type_name = "Psychic"));
 
