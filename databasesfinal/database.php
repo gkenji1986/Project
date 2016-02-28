@@ -1,9 +1,9 @@
 <?php 
 
 
-$db = new mysqli('', '', '', '');
+$connect = new mysqli('', '', '', '');
 
-if($db->connect_errno){
-    echo "ERROR connecting to the database." . $db->connect_errno . "" . $db->connect_error;
+if($connect->connect_errno){
+    echo "ERROR connecting to the database." . $connect->connect_errno . "" . $connect->connect_error;
 }
 ?>
