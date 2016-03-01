@@ -232,7 +232,7 @@
 									
 									$stmt = $mysql->prepare('SELECT poke1.name FROM pokemon poke1 
 											INNER JOIN pokemon_evolutions pe ON pe.pokemon_predecessor_id = poke1.pokemon_id
-											INNER JOIN pokemon poke2 ON poke2.pokemon_id = pe.pokemon_id = pokemon_evolution_id
+											INNER JOIN pokemon poke2 ON poke2.pokemon_id = pe.pokemon_evolution_id
 											WHERE poke2.name=?');
 									$stmt->bind_param('s',$name);
 									$stmt->execute();
