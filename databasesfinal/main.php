@@ -6,42 +6,43 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-
+		<div>
         <h1>PokeDex</h1>
-        <fieldset>
-			<div id="poke_id">
-		   
-				<text>Select a Pokemon name for information about the Pokemon.</text>
-				<form action='main.php' method='POST'>
-					<select id = "generalInfo" name = "generalInfo">
-					   <?php
-							$servername = "oniddb.cws.oregonstate.edu";
-							$username = "nakashig-db";
-							$password = "xXiNAmO8UFsRQc9d";
-							$dbname = "nakashig-db";
-							// Create connection
-							$conn = new mysqli($servername, $username, $password, $dbname);
-							// Check connection
-							if ($conn->connect_error) 
-							{
-							  die("Connection failed: " . $conn->connect_error);
-							} 
-							$sql = "SELECT name FROM pokemon";
-							$result = $conn->query($sql);
-							while ($row = $result->fetch_assoc()) 
-							{
-							  unset($name);
-							  $name = $row['name']; 
-							  echo '<option value="'.$name.'">'.$name.'</option>';
-							}
-							$conn->close();
-						?>
-					</select>
-					<input name="getPokeInfo" type="submit" class="btn-primary" value="Check PokeDex"/>
-				</form>
+		</div>
+			<div>
+				<div class="mainpage">	   
+					<text>Select a Pokemon name for information about the Pokemon.</text>
+						<form action='main.php' method='POST'>
+								<select id = "generalInfo" name = "generalInfo">
+								   <?php
+										$servername = "oniddb.cws.oregonstate.edu";
+										$username = "nakashig-db";
+										$password = "xXiNAmO8UFsRQc9d";
+										$dbname = "nakashig-db";
+										// Create connection
+										$conn = new mysqli($servername, $username, $password, $dbname);
+										// Check connection
+										if ($conn->connect_error) 
+										{
+										  die("Connection failed: " . $conn->connect_error);
+										} 
+										$sql = "SELECT name FROM pokemon";
+										$result = $conn->query($sql);
+										while ($row = $result->fetch_assoc()) 
+										{
+										  unset($name);
+										  $name = $row['name']; 
+										  echo '<option value="'.$name.'">'.$name.'</option>';
+										}
+										$conn->close();
+									?>
+								</select>
+							<input name="getPokeInfo" type="submit" class="btn-primary" value="Check PokeDex"/>
+						</form>
+				</div>
 			</div>
 			<div id="generalTable">
-				<table class="genTable">
+				<table class="table">
 					<tr>
 						<th>Pokemon ID</th>
 						<th>Pokemon Name</th>
@@ -83,10 +84,7 @@
 						</td>
 						<td>
 							<?php
-								if(isset($_POST['getPokeInfo']))
-								{
-									echo $_POST['generalInfo'];
-								}
+								echo $_POST['generalInfo'];
 							?>
 						</td>
 						<td>
@@ -256,6 +254,285 @@
 					</tr>
 				</table>
 			</div>
-        </fieldset>
+			<hr>
+			<div>
+				<div class="mainpage">
+					<form action="main.php" method="POST">
+						<text>Select a move for information about the move.</text><br>
+								<select id = "moveInfo" name = "moveInfo">
+								   <?php
+										$servername = "oniddb.cws.oregonstate.edu";
+										$username = "nakashig-db";
+										$password = "xXiNAmO8UFsRQc9d";
+										$dbname = "nakashig-db";
+										// Create connection
+										$conn = new mysqli($servername, $username, $password, $dbname);
+										// Check connection
+										if ($conn->connect_error) 
+										{
+										  die("Connection failed: " . $conn->connect_error);
+										} 
+										$sql = "SELECT move_name FROM moves";
+										$result = $conn->query($sql);
+										while ($row = $result->fetch_assoc()) 
+										{
+										  unset($name);
+										  $name = $row['move_name']; 
+										  echo '<option value="'.$name.'">'.$name.'</option>';
+										}
+										$conn->close();
+									?>
+								</select>
+							<input name="getMoveInfo" type="submit" class="btn-primary" value="Check PokeDex"/>
+					</form>
+				</div>
+			</div>
+			<div id="moveTable">
+				<table class="table">
+					<tr>
+						<th>Move Name</th>
+						<th>Type</th>
+						<th>Base Damage</th>
+						<th>Power Points</th>
+						<th>Description</th>
+					</tr>
+					<tr>
+						<td>
+							<?php
+								if(isset($_POST['getMoveInfo']))
+								{
+									echo $_POST['moveInfo'];
+								}
+							?>
+						</td>
+						<td>
+							<?php
+								if(isset($_POST['getMoveInfo']))
+								{							
+									$servername = "oniddb.cws.oregonstate.edu";
+									$username = "nakashig-db";
+									$password = "xXiNAmO8UFsRQc9d";
+									$dbname = "nakashig-db";
+									
+									$name = $_POST['moveInfo'];
+									
+									$mysql= new mysqli($servername, $username, $password, $dbname);
+									
+									$stmt = $mysql->prepare('SELECT type_name FROM types 
+											INNER JOIN moves ON moves.move_type = types.type_id
+											WHERE moves.move_name=?');
+									$stmt->bind_param('s',$name);
+									$stmt->execute();
+									$stmt->bind_result($type);
+									$result = $stmt->fetch();
+									echo $type;
+									$stmt->close();
+									if($mysql->connect_error)
+									{
+										die("Connection error: ". $mysql->connect_error);
+									}
+									$mysql->close();
+								}
+							?>
+						</td>
+						<td>
+							<?php
+								if(isset($_POST['getMoveInfo']))
+								{							
+									$servername = "oniddb.cws.oregonstate.edu";
+									$username = "nakashig-db";
+									$password = "xXiNAmO8UFsRQc9d";
+									$dbname = "nakashig-db";
+									
+									$name = $_POST['moveInfo'];
+									
+									$mysql= new mysqli($servername, $username, $password, $dbname);
+									
+									$stmt = $mysql->prepare('SELECT move_base_damage FROM moves WHERE move_name=?');
+									$stmt->bind_param('s',$name);
+									$stmt->execute();
+									$stmt->bind_result($dmg);
+									$result = $stmt->fetch();
+									echo $dmg;
+									$stmt->close();
+									if($mysql->connect_error)
+									{
+										die("Connection error: ". $mysql->connect_error);
+									}
+									$mysql->close();
+								}
+							?>
+						</td>
+						<td>
+							<?php
+								if(isset($_POST['getMoveInfo']))
+								{							
+									$servername = "oniddb.cws.oregonstate.edu";
+									$username = "nakashig-db";
+									$password = "xXiNAmO8UFsRQc9d";
+									$dbname = "nakashig-db";
+									
+									$name = $_POST['moveInfo'];
+									
+									$mysql= new mysqli($servername, $username, $password, $dbname);
+									
+									$stmt = $mysql->prepare('SELECT move_pp FROM moves WHERE move_name=?');
+									$stmt->bind_param('s',$name);
+									$stmt->execute();
+									$stmt->bind_result($pp);
+									$result = $stmt->fetch();
+									echo $pp;
+									$stmt->close();
+									if($mysql->connect_error)
+									{
+										die("Connection error: ". $mysql->connect_error);
+									}
+									$mysql->close();
+								}
+							?>
+						</td>
+						<td>
+							<?php
+								if(isset($_POST['getMoveInfo']))
+								{							
+									$servername = "oniddb.cws.oregonstate.edu";
+									$username = "nakashig-db";
+									$password = "xXiNAmO8UFsRQc9d";
+									$dbname = "nakashig-db";
+									
+									$name = $_POST['moveInfo'];
+									
+									$mysql= new mysqli($servername, $username, $password, $dbname);
+									
+									$stmt = $mysql->prepare('SELECT description FROM moves WHERE move_name=?');
+									$stmt->bind_param('s',$name);
+									$stmt->execute();
+									$stmt->bind_result($desc);
+									$result = $stmt->fetch();
+									echo $desc;
+									$stmt->close();
+									if($mysql->connect_error)
+									{
+										die("Connection error: ". $mysql->connect_error);
+									}
+									$mysql->close();
+								}
+							?>
+						</td>
+					</tr>
+				</table>
+			</div>
+		<div>
+			<div class="mainpage">
+				<form action="main.php" method="POST">
+					<text>Select a trainer for information about the trainer.</text><br>
+							<select id = "trainerInfo" name = "trainerInfo">
+								<?php
+									$servername = "oniddb.cws.oregonstate.edu";
+									$username = "nakashig-db";
+									$password = "xXiNAmO8UFsRQc9d";
+									$dbname = "nakashig-db";
+									// Create connection
+									$conn = new mysqli($servername, $username, $password, $dbname);
+									// Check connection
+									if ($conn->connect_error) 
+									{
+									  die("Connection failed: " . $conn->connect_error);
+									} 
+									$sql = "SELECT trainer_name FROM trainer";
+									$result = $conn->query($sql);
+									while ($row = $result->fetch_assoc()) 
+									{
+									  unset($name);
+									  $name = $row['trainer_name']; 
+									  echo '<option value="'.$name.'">'.$name.'</option>';
+									}
+									$conn->close();	
+								?>
+							</select>
+						<input name="getTrainerInfo" type="submit" class="btn-primary" value="Check PokeDex"/>
+				</form>
+			</div>
+		</div>
+		<div id="trainerTable">
+			<table class="table">
+				<tr>
+					<th>Trainer Name</th>
+					<th>Description</th>
+					<th>Pokemon Types</th>
+				</tr>
+				<tr>
+					<td>
+						<?php
+							echo $_POST['trainerInfo'];
+						?>
+					</td>
+					<td>
+						<?php
+							if(isset($_POST['getTrainerInfo']))
+							{							
+								$servername = "oniddb.cws.oregonstate.edu";
+								$username = "nakashig-db";
+								$password = "xXiNAmO8UFsRQc9d";
+								$dbname = "nakashig-db";
+								
+								$name = $_POST['trainerInfo'];
+								
+								$mysql= new mysqli($servername, $username, $password, $dbname);
+									
+								$stmt = $mysql->prepare('SELECT description FROM trainer WHERE trainer_name=?');
+								$stmt->bind_param('s',$name);
+								$stmt->execute();
+								if($mysql->connect_error)
+								{
+									die("Connection error: ". $mysql->connect_error);
+								}
+								$stmt->bind_result($desc);
+								while($stmt->fetch())
+								{
+									echo $desc."<br>";
+								}
+								$stmt->close();
+								$mysql->close();
+							}
+						?>
+					</td>
+					<td>
+						<?php
+							if(isset($_POST['getTrainerInfo']))
+							{							
+								$servername = "oniddb.cws.oregonstate.edu";
+								$username = "nakashig-db";
+								$password = "xXiNAmO8UFsRQc9d";
+								$dbname = "nakashig-db";
+								
+								$name = $_POST['trainerInfo'];
+								
+								$mysql= new mysqli($servername, $username, $password, $dbname);
+									
+								$stmt = $mysql->prepare('SELECT type_name FROM types 
+									INNER JOIN trainer_pokemon ON types.type_id = trainer_pokemon.trainer_pokemon_type_id
+									INNER JOIN trainer ON trainer_pokemon.trainer_pokemon_id = trainer.trainer_id
+									WHERE trainer_name=?');
+								$stmt->bind_param('s',$name);
+								$stmt->execute();
+								$types = "";
+								if($mysql->connect_error)
+								{
+									die("Connection error: ". $mysql->connect_error);
+								}
+								$stmt->bind_result($types);
+								while($stmt->fetch())
+								{
+									echo $types."<br>";
+								}
+								$stmt->close();
+								$mysql->close();
+							}
+						?>
+					</td>
+				</tr>
+			</table>
+		</div>
     </body>
 </html>
