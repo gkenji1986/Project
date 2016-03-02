@@ -6,6 +6,15 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
+        <!-- James' Changes -->
+<nav>
+        <ul>
+          <li><a href="main.php" class="selected">Selections</a></li>
+          <li><a href="main.html">Insertions</a></li>
+          <li><a href="deletion.html" class="selected">Deletions</a></li>
+        </ul>
+ </nav>
+   <!-- James' Changes -->
 		<div>
         <h1>PokeDex</h1>
 		</div>
