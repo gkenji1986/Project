@@ -9,9 +9,10 @@
         <!-- James' Changes -->
 <nav>
         <ul>
-          <li><a href="main.php" class="selected">Selections</a></li>
-          <li><a href="main.html">Insertions</a></li>
-          <li><a href="deletion.html" class="selected">Deletions</a></li>
+          <li><a href="insert.php">Insert Pokemon into Pokedex</a></li>       
+		  <li><a href="insert_move.php" class="selected">Insert Moves into Pokedex</a></li>
+		  <li><a href="insert_trainer.php" class="selected">Insert Trainer into Pokedex</a></li>
+		  <li><a href="deletion.php" class="selected">Delete Pokemon from Pokedex</a></li>
         </ul>
  </nav>
    <!-- James' Changes -->
@@ -431,6 +432,7 @@
 					</tr>
 				</table>
 			</div>
+			<hr>
 		<div>
 			<div class="mainpage">
 				<form action="main.php" method="POST">
