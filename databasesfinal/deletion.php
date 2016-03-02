@@ -10,7 +10,7 @@
 			<fieldset>
 				<div id="insert_poke">
 		   
-					<text>Enter id, name, and description to add a pokemon</text>
+					<text>Select a Pokemon to delete from the Pokedex</text>
 
 						<form action='poke_delete.php' method='POST'>
 									<select id = "deletePoke" name = "deletePoke">
