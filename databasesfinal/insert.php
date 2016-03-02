@@ -30,5 +30,8 @@
             </form>
         </div>
         </fieldset>
+		<ol class="list-unstyled">
+				<li><a href="main.php">Back to Main Page</a></li> 
+        </ol>
     </body>
 </html>
