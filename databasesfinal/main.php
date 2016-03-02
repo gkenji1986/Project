@@ -9,10 +9,10 @@
         <!-- James' Changes -->
 <nav>
         <ul>
-          <li><a href="insert.php">Insert Pokemon into Pokedex</a></li>       
-		  <li><a href="insert_move.php" class="selected">Insert Moves into Pokedex</a></li>
-		  <li><a href="insert_trainer.php" class="selected">Insert Trainer into Pokedex</a></li>
-		  <li><a href="deletion.php" class="selected">Delete Pokemon from Pokedex</a></li>
+          <li><a href="insert.php">Insert Pokemon and attributes for Pokemon into Pokedex</a></li>       
+		  <li><a href="insert_move.php" class="selected">Insert Moves and attributes into Pokedex</a></li>
+		  <li><a href="insert_trainer.php" class="selected">Insert Trainer and trainer's Pokemon into Pokedex</a></li>
+		  <li><a href="deletion.php" class="selected">Delete Information from Pokedex</a></li>
         </ul>
  </nav>
    <!-- James' Changes -->
