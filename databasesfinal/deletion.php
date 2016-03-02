@@ -12,32 +12,162 @@
 		   
 					<text>Select a Pokemon to delete from the Pokedex</text>
 
-						<form action='poke_delete.php' method='POST'>
-									<select id = "deletePoke" name = "deletePoke">
+						<form action='pokemon_delete_queries.php' method='POST'>
+									<select id = "pokemon" name = "pokemon">
 									   <?php
 											$servername = "oniddb.cws.oregonstate.edu";
 											$username = "nakashig-db";
 											$password = "xXiNAmO8UFsRQc9d";
 											$dbname = "nakashig-db";
 											// Create connection
-											$conn = new mysqli($servername, $username, $password, $dbname);
+											$mysql = new mysqli($servername, $username, $password, $dbname);
 											// Check connection
-											if ($conn->connect_error) 
+											if ($mysql->connect_error) 
 											{
-											  die("Connection failed: " . $conn->connect_error);
+											  die("Connection failed: " . $mysql->connect_error);
 											} 
 											$sql = "SELECT name FROM pokemon";
-											$result = $conn->query($sql);
+											$result = $mysql->query($sql);
 											while ($row = $result->fetch_assoc()) 
 											{
 											  unset($name);
 											  $name = $row['name']; 
 											  echo '<option value="'.$name.'">'.$name.'</option>';
 											}
-											$conn->close();
+											$mysql->close();
 										?>
 									</select>
-								<input name="deletePokemon" type="submit" class="btn-primary" value="Submit"/>
+								<input name="deletePokemon" type="submit" value="Submit"/>
+						</form>
+				</div>
+			</fieldset>
+			<br>
+			<fieldset>
+				<div id="">
+					<text>Select a Type to delete from the Pokedex</text>
+						<form action='pokemon_delete_queries.php' method='POST'>
+								<select id = "type" name = "type">
+									<?php
+										$servername = "oniddb.cws.oregonstate.edu";
+										$username = "nakashig-db";
+										$password = "xXiNAmO8UFsRQc9d";
+										$dbname = "nakashig-db";
+										// Create connection
+										$mysql = new mysqli($servername, $username, $password, $dbname);
+										// Check connection
+										if ($mysql->connect_error) 
+										{
+										  die("Connection failed: " . $mysql->connect_error);
+										} 
+										$sql = "SELECT type_name FROM types";
+										$result = $mysql->query($sql);
+										while ($row = $result->fetch_assoc()) 
+										{
+										  unset($type);
+										  $type = $row['type_name']; 
+										  echo '<option value="'.$type.'">'.$type.'</option>';
+										}
+										$mysql->close();
+									?>
+								</select>
+							<input name="deleteType" type="submit" value="Submit"/>
+						</form>
+				</div>
+			</fieldset>
+			<br>
+			<fieldset>
+				<div id="">
+					<text>Select a Move to delete from the Pokedex</text>
+						<form action='pokemon_delete_queries.php' method='POST'>
+								<select id = "move" name = "move">
+									<?php
+										$servername = "oniddb.cws.oregonstate.edu";
+										$username = "nakashig-db";
+										$password = "xXiNAmO8UFsRQc9d";
+										$dbname = "nakashig-db";
+										// Create connection
+										$mysql = new mysqli($servername, $username, $password, $dbname);
+										// Check connection
+										if ($mysql->connect_error) 
+										{
+										  die("Connection failed: " . $mysql->connect_error);
+										} 
+										$sql = "SELECT move_name FROM moves";
+										$result = $mysql->query($sql);
+										while ($row = $result->fetch_assoc()) 
+										{
+										  unset($move);
+										  $move = $row['move_name']; 
+										  echo '<option value="'.$move.'">'.$move.'</option>';
+										}
+										$mysql->close();
+									?>
+								</select>
+							<input name="deleteMove" type="submit" value="Submit"/>
+						</form>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div id="">
+					<text>Select a Route to delete from the Pokedex</text>
+						<form action='pokemon_delete_queries.php' method='POST'>
+								<select id = "route" name = "route">
+									<?php
+										$servername = "oniddb.cws.oregonstate.edu";
+										$username = "nakashig-db";
+										$password = "xXiNAmO8UFsRQc9d";
+										$dbname = "nakashig-db";
+										// Create connection
+										$mysql = new mysqli($servername, $username, $password, $dbname);
+										// Check connection
+										if ($mysql->connect_error) 
+										{
+										  die("Connection failed: " . $mysql->connect_error);
+										} 
+										$sql = "SELECT route_name FROM routes";
+										$result = $mysql->query($sql);
+										while ($row = $result->fetch_assoc()) 
+										{
+										  unset($route);
+										  $route = $row['route_name']; 
+										  echo '<option value="'.$route.'">'.$route.'</option>';
+										}
+										$mysql->close();
+									?>
+								</select>
+							<input name="deleteRoute" type="submit" value="Submit"/>
+						</form>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div id="">
+					<text>Select a Trainer to delete from the Pokedex</text>
+						<form action='pokemon_delete_queries.php' method='POST'>
+								<select id = "trainer" name = "trainer">
+									<?php
+										$servername = "oniddb.cws.oregonstate.edu";
+										$username = "nakashig-db";
+										$password = "xXiNAmO8UFsRQc9d";
+										$dbname = "nakashig-db";
+										// Create connection
+										$mysql = new mysqli($servername, $username, $password, $dbname);
+										// Check connection
+										if ($mysql->connect_error) 
+										{
+										  die("Connection failed: " . $mysql->connect_error);
+										} 
+										$sql = "SELECT trainer_name FROM trainer";
+										$result = $mysql->query($sql);
+										while ($row = $result->fetch_assoc()) 
+										{
+										  unset($name);
+										  $name = $row['trainer_name']; 
+										  echo '<option value="'.$name.'">'.$name.'</option>';
+										}
+										$mysql->close();
+									?>
+								</select>
+							<input name="deleteTrainer" type="submit" value="Submit"/>
 						</form>
 				</div>
 			</fieldset>
