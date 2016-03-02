@@ -16,7 +16,7 @@
             <form action='poke_id.php' method='POST'>
                 <p>
                     <label for="poke_id">Id:</label>
-                    <input type="text" name="value1"/>
+                    <input type="number" name="value1" min="1" max= "151"/>
                 </p>
                   <p>
                     <label for="poke_id">Name:</label>
@@ -26,10 +26,9 @@
                     <label for="poke_id">Description:</label>
                     <input type="text" name="value3"/>
                 </p>
-                <input type="submit" value="Submit" />
+                <input name="addPokemon" type="submit" value="Submit"/>
             </form>
         </div>
         </fieldset>
-
     </body>
 </html>
