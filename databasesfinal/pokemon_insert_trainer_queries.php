@@ -50,6 +50,6 @@
 		$mysql->close();
 	}
 	
-	header("Location:main.php");
+	header("Location:insert_trainer.php");
     exit();
 ?>
