@@ -85,6 +85,6 @@
 	{
 		
 	}
-	header("Location:main.php");
+	header("Location:insert_move.php");
     exit();
 ?>
