@@ -89,6 +89,6 @@
 		$mysql->close();
 	}
 	
-	header("Location:main.php");
+	header("Location:deletion.php");
     exit();
 ?>
