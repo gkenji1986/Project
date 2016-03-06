@@ -6,6 +6,16 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
+            <!-- James' Changes -->
+<nav>
+        <ul>
+        <li><a href="main.php">Back to Main Page</a></li> 
+          <li><a href="insert.php">Insert Pokemon and attributes for Pokemon into Pokedex</a></li>       
+		  <li><a href="insert_move.php" class="selected">Insert Moves and attributes into Pokedex</a></li>
+		  <li><a href="insert_trainer.php" class="selected">Insert Trainer and trainer's Pokemon into Pokedex</a></li>
+		  <li><a href="deletion.php" class="selected">Delete Information from Pokedex</a></li>
+        </ul>
+ </nav>
         <h1>PokeDex</h1>
 			<fieldset>
 				<div id="insert_poke">
@@ -37,7 +47,7 @@
 											$mysql->close();
 										?>
 									</select>
-								<input name="deletePokemon" type="submit" value="Submit"/>
+								<input name="deletePokemon" type="submit" class="btn-primary" value="Submit"/>
 						</form>
 				</div>
 			</fieldset>
@@ -70,7 +80,7 @@
 										$mysql->close();
 									?>
 								</select>
-							<input name="deleteType" type="submit" value="Submit"/>
+							<input name="deleteType" type="submit" class="btn-primary" value="Submit"/>
 						</form>
 				</div>
 			</fieldset>
@@ -103,7 +113,7 @@
 										$mysql->close();
 									?>
 								</select>
-							<input name="deleteMove" type="submit" value="Submit"/>
+							<input name="deleteMove" type="submit" class="btn-primary" value="Submit"/>
 						</form>
 				</div>
 			</fieldset>
@@ -135,7 +145,7 @@
 										$mysql->close();
 									?>
 								</select>
-							<input name="deleteRoute" type="submit" value="Submit"/>
+							<input name="deleteRoute" type="submit" class="btn-primary" value="Submit"/>
 						</form>
 				</div>
 			</fieldset>
@@ -145,6 +155,7 @@
 						<form action='pokemon_delete_queries.php' method='POST'>
 								<select id = "trainer" name = "trainer">
 									<?php
+
 										$servername = "oniddb.cws.oregonstate.edu";
 										$username = "nakashig-db";
 										$password = "xXiNAmO8UFsRQc9d";
@@ -167,12 +178,10 @@
 										$mysql->close();
 									?>
 								</select>
-							<input name="deleteTrainer" type="submit" value="Submit"/>
+							<input name="deleteTrainer" type="submit"  class="btn-primary" value="Submit"/>
 						</form>
 				</div>
 			</fieldset>
-			<ol class="list-unstyled">
-				<li><a href="main.php">Back to Main Page</a></li> 
-            </ol>
+		
     </body>
 </html>
