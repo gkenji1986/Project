@@ -6,6 +6,16 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
+            <!-- James' Changes -->
+<nav>
+        <ul>
+        <li><a href="main.php">Back to Main Page</a></li> 
+          <li><a href="insert.php">Insert Pokemon and attributes for Pokemon into Pokedex</a></li>       
+		  <li><a href="insert_move.php" class="selected">Insert Moves and attributes into Pokedex</a></li>
+		  <li><a href="insert_trainer.php" class="selected">Insert Trainer and trainer's Pokemon into Pokedex</a></li>
+		  <li><a href="deletion.php" class="selected">Delete Information from Pokedex</a></li>
+        </ul>
+ </nav>
         <h1>PokeDex</h1>
         <fieldset>
 			<div id="insert_poke">      
@@ -24,7 +34,7 @@
 						<label for="poke_id">Description:</label>
 						<input type="text" name="value3"/>
 					</p>
-					<input name="addPokemon" type="submit" value="Submit"/>
+					<input name="addPokemon" type="submit" class="btn-primary" value="Submit"/>
 				</form>
 			</div>
         </fieldset>
@@ -83,7 +93,7 @@
 									$mysql->close();	
 								?>
 						</select>
-						<input name="addPokemonType" type="submit" value="Submit"/>
+						<input name="addPokemonType" type="submit" class="btn-primary" value="Submit"/>
 					</form>
 			</div>
         </fieldset>
@@ -143,7 +153,7 @@
 										$mysql->close();
 									?>
 								</select>
-							<input name="evolutionPokemon" type="submit" value="Submit"/>
+							<input name="evolutionPokemon" type="submit" class="btn-primary" value="Submit"/>
 						</form>
 			</div>
 		</fieldset>
@@ -156,7 +166,7 @@
 						<label for="poke_id">Type:</label>
 						<input type="text" name="type"/>
 					</p>
-					<input name="addType" type="submit" value="Submit"/>
+					<input name="addType" type="submit" class="btn-primary" value="Submit"/>
 				</form>
 			</div>
 		</fieldset>
@@ -216,7 +226,7 @@
 										$mysql->close();
 									?>
 								</select>
-							<input name="routePoke" type="submit" value="Submit"/>
+							<input name="routePoke" type="submit" class="btn-primary" value="Submit"/>
 						</form>
 			</div>
 		</fieldset>
@@ -232,12 +242,10 @@
 						<label for="route">Description:</label>
 						<input type="text" name="route_description"/>
 					</p>
-					<input name="addRoute" type="submit" value="Submit"/>
+					<input name="addRoute" type="submit" class="btn-primary" value="Submit"/>
 				</form>
 			</div>
 		</fieldset>
-		<ol class="list-unstyled">
-				<li><a href="main.php">Back to Main Page</a></li> 
-        </ol>
+	
     </body>
 </html>

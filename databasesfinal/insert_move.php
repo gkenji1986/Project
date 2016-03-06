@@ -6,7 +6,16 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-
+        <!-- James' Changes -->
+<nav>
+        <ul>
+        <li><a href="main.php">Back to Main Page</a></li> 
+          <li><a href="insert.php">Insert Pokemon and attributes for Pokemon into Pokedex</a></li>       
+		  <li><a href="insert_move.php" class="selected">Insert Moves and attributes into Pokedex</a></li>
+		  <li><a href="insert_trainer.php" class="selected">Insert Trainer and trainer's Pokemon into Pokedex</a></li>
+		  <li><a href="deletion.php" class="selected">Delete Information from Pokedex</a></li>
+        </ul>
+ </nav>
         <h1>PokeDex</h1>
         <fieldset>
 			<div id="insert_poke">
@@ -57,7 +66,7 @@
 						<label for="poke_move">Description:</label>
 						<input type="text" id="moveDesc" name="moveDesc"/>
 					</p>
-					<input name="addMoveList" type="submit" value="Submit"/>
+					<input name="addMoveList" type="submit" class="btn-primary" value="Submit"/>
 				</form>
 			</div>
         </fieldset>
@@ -120,7 +129,7 @@
 								</select>
 							</p>
 					</form>
-					<input name="addPokeMove" type="submit" value="Submit"/>
+					<input name="addPokeMove" type="submit" class="btn-primary" value="Submit"/>
 			</div>
 		</fieldset>
 		<br>
@@ -165,12 +174,10 @@
 							<input type="number" id="updatePp" name="updatePp" min="1" max= "40"/>
 						</p>
 				</form>
-				<input name="updateMove" type="submit" value="Submit"/>
+				<input name="updateMove" type="submit" class="btn-primary" value="Submit"/>
 			</div>
 		</fieldset>
 		<br>
-		<ol class="list-unstyled">
-			<li><a href="main.php">Back to Main Page</a></li> 
-        </ol>
+	
     </body>
 </html>

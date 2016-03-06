@@ -6,6 +6,16 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
+            <!-- James' Changes -->
+<nav>
+        <ul>
+        <li><a href="main.php">Back to Main Page</a></li> 
+          <li><a href="insert.php">Insert Pokemon and attributes for Pokemon into Pokedex</a></li>       
+		  <li><a href="insert_move.php" class="selected">Insert Moves and attributes into Pokedex</a></li>
+		  <li><a href="insert_trainer.php" class="selected">Insert Trainer and trainer's Pokemon into Pokedex</a></li>
+		  <li><a href="deletion.php" class="selected">Delete Information from Pokedex</a></li>
+        </ul>
+ </nav>
         <h1>PokeDex</h1>
         <fieldset>
         <div id="insert_poke">
@@ -21,7 +31,7 @@
                     <label for="trainer">Description:</label>
                     <input type="text" name="trainer_desc"/>
                 </p>
-                <input name="addTrainer" type="submit" value="Submit"/>
+                <input name="addTrainer" type="submit" class="btn-primary" value="Submit"/>
             </form>
         </div>
         </fieldset>
@@ -79,11 +89,9 @@
 									$mysql->close();	
 								?>
 								</select>
-							<input name="addTrainerType" type="submit" value="Submit"/>	
+							<input name="addTrainerType" type="submit" class="btn-primary" value="Submit"/>	
 					</form>
 		</fieldset>
-		<ol class="list-unstyled">
-			<li><a href="main.php">Back to Main Page</a></li> 
-        </ol>
+		
     </body>
 </html>
