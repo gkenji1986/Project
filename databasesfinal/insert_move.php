@@ -140,8 +140,9 @@
 									?>
 								</select>
 							</p>
+							<input name="addPokeMove" type="submit" class="btn-primary" value="Submit"/>
 					</form>
-					<input name="addPokeMove" type="submit" class="btn-primary" value="Submit"/>
+					
 			</div>
 		</fieldset>
 		<br>
@@ -152,7 +153,7 @@
 				<form action='pokemon_move_insert_queries.php' method='POST'>
 						<p>
 						<text>Move</text>				
-						<select id = "updateMove" name = "updateMove">
+						<select id = "moveName" name = "moveName">
 							<?php
 							//set up the server
 								$servername = "oniddb.cws.oregonstate.edu";
@@ -190,8 +191,9 @@
 							<label for="poke_move">PP:</label>
 							<input type="number" id="updatePp" name="updatePp" min="1" max= "40"/>
 						</p>
+						<input name="updateMove" type="submit" class="btn-primary" value="Submit"/>
 				</form>
-				<input name="updateMove" type="submit" class="btn-primary" value="Submit"/>
+				
 			</div>
 		</fieldset>
 		<br>
