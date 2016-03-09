@@ -25,6 +25,7 @@
 						<form action='main.php' method='POST'>
 								<select id = "generalInfo" name = "generalInfo">
 								   <?php
+								   //set up server information
 										$servername = "oniddb.cws.oregonstate.edu";
 										$username = "nakashig-db";
 										$password = "xXiNAmO8UFsRQc9d";
@@ -38,6 +39,7 @@
 										} 
 										$sql = "SELECT name FROM pokemon";
 										$result = $conn->query($sql);
+										//generate the table to show the results
 										while ($row = $result->fetch_assoc()) 
 										{
 										  unset($name);
@@ -52,6 +54,7 @@
 				</div>
 			</div>
 			<div id="generalTable">
+			   <!-- Set up the table -->
 				<table class="table">
 					<tr>
 						<th>Pokemon ID</th>
@@ -66,7 +69,8 @@
 						<td>
 							<?php
 								if(isset($_POST['getPokeInfo']))
-								{							
+								{	
+								//set up the server info						
 									$servername = "oniddb.cws.oregonstate.edu";
 									$username = "nakashig-db";
 									$password = "xXiNAmO8UFsRQc9d";
@@ -75,7 +79,7 @@
 									$name = $_POST['generalInfo'];
 										
 									$mysql= new mysqli($servername, $username, $password, $dbname);
-										
+									//set up the SELECT statement	
 									$stmt = $mysql->prepare('SELECT pokemon_id FROM pokemon WHERE name=?');
 									$stmt->bind_param('s',$name);
 									$stmt->execute();
@@ -94,11 +98,13 @@
 						</td>
 						<td>
 							<?php
+							//display the results
 								echo $_POST['generalInfo'];
 							?>
 						</td>
 						<td>
 							<?php
+							//if post for poke info, get ready to set the table up
 								if(isset($_POST['getPokeInfo']))
 								{							
 									$servername = "oniddb.cws.oregonstate.edu";
@@ -109,7 +115,7 @@
 									$name = $_POST['generalInfo'];
 									
 									$mysql= new mysqli($servername, $username, $password, $dbname);
-									
+									//set up the SELECT statement to show the table
 									$stmt = $mysql->prepare('SELECT type_name FROM types 
 											INNER JOIN pokemon_types ON types.type_id = pokemon_types.ptid
 											INNER JOIN pokemon ON pokemon_types.pid = pokemon.pokemon_id
@@ -122,6 +128,7 @@
 									}
 									$type = "";
 									$stmt->bind_result($type);
+									//generate the entire table
 									while($stmt->fetch())
 									{
 										echo $type."<br>";
@@ -133,17 +140,19 @@
 						</td>
 						<td>
 							<?php
+							//if looking for pokemon information
 								if(isset($_POST['getPokeInfo']))
-								{							
+								{	
+								//set up the server						
 									$servername = "oniddb.cws.oregonstate.edu";
 									$username = "nakashig-db";
 									$password = "xXiNAmO8UFsRQc9d";
 									$dbname = "nakashig-db";
-										
+									//set name equal to the post of general info	
 									$name = $_POST['generalInfo'];
 										
 									$mysql= new mysqli($servername, $username, $password, $dbname);
-										
+									//set up the SELECt statement	
 									$stmt = $mysql->prepare('SELECT description FROM pokemon WHERE name=?');
 									$stmt->bind_param('s',$name);
 									$stmt->execute();
@@ -153,6 +162,7 @@
 									}
 									$stmt->bind_result($pokemonDesc);
 									$results = $stmt->fetch();
+									//return the pokemon description
 									echo $pokemonDesc;
 									$stmt->close();
 									$mysql->close();
@@ -161,6 +171,7 @@
 						</td>
 						<td>
 							<?php
+							//if looking for pokemon information
 								if(isset($_POST['getPokeInfo']))
 								{							
 									$servername = "oniddb.cws.oregonstate.edu";
@@ -195,6 +206,7 @@
 						</td>
 						<td>
 							<?php
+							//if looking for pokemon information
 								if(isset($_POST['getPokeInfo']))
 								{							
 									$servername = "oniddb.cws.oregonstate.edu";
@@ -229,17 +241,19 @@
 						</td>
 						<td>
 							<?php
+							//if looking for pokemon information
 								if(isset($_POST['getPokeInfo']))
-								{							
+								{		
+									//set up the server					
 									$servername = "oniddb.cws.oregonstate.edu";
 									$username = "nakashig-db";
 									$password = "xXiNAmO8UFsRQc9d";
 									$dbname = "nakashig-db";
-									
+									//set up the post information to send
 									$name = $_POST['generalInfo'];
 									
 									$mysql= new mysqli($servername, $username, $password, $dbname);
-									
+									//set up the select statement
 									$stmt = $mysql->prepare('SELECT poke1.name FROM pokemon poke1 
 											INNER JOIN pokemon_evolutions pe ON pe.pokemon_predecessor_id = poke1.pokemon_id
 											INNER JOIN pokemon poke2 ON poke2.pokemon_id = pe.pokemon_evolution_id
@@ -252,6 +266,7 @@
 									}
 									$evolution = "";
 									$stmt->bind_result($evolution);
+									//display the results
 									while($stmt->fetch())
 									{
 										echo $evolution."<br>";
@@ -271,6 +286,7 @@
 						<text>Select a move for information about the move.</text><br>
 								<select id = "moveInfo" name = "moveInfo">
 								   <?php
+								   		//set up the server	
 										$servername = "oniddb.cws.oregonstate.edu";
 										$username = "nakashig-db";
 										$password = "xXiNAmO8UFsRQc9d";
@@ -284,6 +300,7 @@
 										} 
 										$sql = "SELECT move_name FROM moves";
 										$result = $conn->query($sql);
+										//display the results
 										while ($row = $result->fetch_assoc()) 
 										{
 										  unset($name);
@@ -318,16 +335,17 @@
 						<td>
 							<?php
 								if(isset($_POST['getMoveInfo']))
-								{							
+								{	
+									//set up the server							
 									$servername = "oniddb.cws.oregonstate.edu";
 									$username = "nakashig-db";
 									$password = "xXiNAmO8UFsRQc9d";
 									$dbname = "nakashig-db";
-									
+									//set name equal to post from move info
 									$name = $_POST['moveInfo'];
 									
 									$mysql= new mysqli($servername, $username, $password, $dbname);
-									
+									//set up the select statement
 									$stmt = $mysql->prepare('SELECT type_name FROM types 
 											INNER JOIN moves ON moves.move_type = types.type_id
 											WHERE moves.move_name=?');
@@ -353,11 +371,11 @@
 									$username = "nakashig-db";
 									$password = "xXiNAmO8UFsRQc9d";
 									$dbname = "nakashig-db";
-									
+									//set name equal to move info post information
 									$name = $_POST['moveInfo'];
 									
 									$mysql= new mysqli($servername, $username, $password, $dbname);
-									
+									//set up the select statement
 									$stmt = $mysql->prepare('SELECT move_base_damage FROM moves WHERE move_name=?');
 									$stmt->bind_param('s',$name);
 									$stmt->execute();
@@ -376,21 +394,23 @@
 						<td>
 							<?php
 								if(isset($_POST['getMoveInfo']))
-								{							
+								{	
+									//set up the server information						
 									$servername = "oniddb.cws.oregonstate.edu";
 									$username = "nakashig-db";
 									$password = "xXiNAmO8UFsRQc9d";
 									$dbname = "nakashig-db";
-									
+									//set name equal to the post information from move info
 									$name = $_POST['moveInfo'];
 									
 									$mysql= new mysqli($servername, $username, $password, $dbname);
-									
+									//set up the select statement
 									$stmt = $mysql->prepare('SELECT move_pp FROM moves WHERE move_name=?');
 									$stmt->bind_param('s',$name);
 									$stmt->execute();
 									$stmt->bind_result($pp);
 									$result = $stmt->fetch();
+									//display the result
 									echo $pp;
 									$stmt->close();
 									if($mysql->connect_error)
@@ -404,21 +424,23 @@
 						<td>
 							<?php
 								if(isset($_POST['getMoveInfo']))
-								{							
+								{	
+									//set up the server information						
 									$servername = "oniddb.cws.oregonstate.edu";
 									$username = "nakashig-db";
 									$password = "xXiNAmO8UFsRQc9d";
 									$dbname = "nakashig-db";
-									
+									//set name equal to the post information from move info
 									$name = $_POST['moveInfo'];
 									
 									$mysql= new mysqli($servername, $username, $password, $dbname);
-									
+									//set up the select statement
 									$stmt = $mysql->prepare('SELECT description FROM moves WHERE move_name=?');
 									$stmt->bind_param('s',$name);
 									$stmt->execute();
 									$stmt->bind_result($desc);
 									$result = $stmt->fetch();
+									//display the result
 									echo $desc;
 									$stmt->close();
 									if($mysql->connect_error)
@@ -439,6 +461,7 @@
 					<text>Select a trainer for information about the trainer.</text><br>
 							<select id = "trainerInfo" name = "trainerInfo">
 								<?php
+								//set up the server name
 									$servername = "oniddb.cws.oregonstate.edu";
 									$username = "nakashig-db";
 									$password = "xXiNAmO8UFsRQc9d";
@@ -450,8 +473,10 @@
 									{
 									  die("Connection failed: " . $conn->connect_error);
 									} 
+									//set up the select statement
 									$sql = "SELECT trainer_name FROM trainer";
 									$result = $conn->query($sql);
+									//display the results
 									while ($row = $result->fetch_assoc()) 
 									{
 									  unset($name);
@@ -499,6 +524,7 @@
 									die("Connection error: ". $mysql->connect_error);
 								}
 								$stmt->bind_result($desc);
+								//display the result
 								while($stmt->fetch())
 								{
 									echo $desc."<br>";
@@ -510,8 +536,10 @@
 					</td>
 					<td>
 						<?php
+						//if user is trying to get trainer information
 							if(isset($_POST['getTrainerInfo']))
-							{							
+							{		
+							//set up the server information					
 								$servername = "oniddb.cws.oregonstate.edu";
 								$username = "nakashig-db";
 								$password = "xXiNAmO8UFsRQc9d";
@@ -520,7 +548,7 @@
 								$name = $_POST['trainerInfo'];
 								
 								$mysql= new mysqli($servername, $username, $password, $dbname);
-									
+									//set up the select statement
 								$stmt = $mysql->prepare('SELECT type_name FROM types 
 									INNER JOIN trainer_pokemon ON types.type_id = trainer_pokemon.trainer_pokemon_type_id
 									INNER JOIN trainer ON trainer_pokemon.trainer_pokemon_id = trainer.trainer_id
@@ -533,6 +561,7 @@
 									die("Connection error: ". $mysql->connect_error);
 								}
 								$stmt->bind_result($types);
+								//display the results
 								while($stmt->fetch())
 								{
 									echo $types."<br>";

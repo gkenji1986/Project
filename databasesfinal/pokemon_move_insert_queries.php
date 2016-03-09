@@ -95,10 +95,7 @@
 		$mysql->close();
 	}
 	
-	if(isset($_POST['addMoveList']))
-	{
-		
-	}
+
 	header("Location:insert_move.php");
     exit();
 ?>

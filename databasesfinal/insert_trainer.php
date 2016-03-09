@@ -6,7 +6,7 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-            <!-- James' Changes -->
+            <!-- nav bar -->
 <nav>
         <ul>
         <li><a href="main.php">Back to Main Page</a></li> 
@@ -21,7 +21,7 @@
         <div id="insert_poke">
        
             <text>Enter name and description for the new Trainer</text>
-
+ <!-- setting up the post method-->
             <form action='pokemon_insert_trainer_queries.php' method='POST'>
                  <p>
                     <label for="trainer">Name:</label>
@@ -42,19 +42,22 @@
 					<form action='pokemon_insert_trainer_queries.php' method='POST'>
 								<select id = "trainerName" name = "trainerName">
 									<?php
+									//set up the server
 										$servername = "oniddb.cws.oregonstate.edu";
 										$username = "nakashig-db";
 										$password = "xXiNAmO8UFsRQc9d";
 										$dbname = "nakashig-db";
 										
 										$mysql= new mysqli($servername, $username, $password, $dbname);
-											
+										//check the connection	
 										if ($mysql->connect_error) 
 										{
 											 die("Connection failed: " . $mysql->connect_error);
 										} 
+										//create the select statement
 										$sql = "SELECT trainer_name FROM trainer";
 										$result = $mysql->query($sql);
+										//output the result
 										while ($row = $result->fetch_assoc()) 
 										{
 											 unset($name);
@@ -67,6 +70,7 @@
 				<text>Type</text>
 								<select id = "trainerType" name = "trainerType">
 									<?php
+									//set up the server
 									$servername = "oniddb.cws.oregonstate.edu";
 									$username = "nakashig-db";
 									$password = "xXiNAmO8UFsRQc9d";
@@ -78,8 +82,10 @@
 									{
 										 die("Connection failed: " . $mysql->connect_error);
 									} 
+									//set up the select statement
 									$sql = "SELECT type_name FROM types";
 									$result = $mysql->query($sql);
+									//output the result
 									while ($row = $result->fetch_assoc()) 
 									{
 										 unset($type);

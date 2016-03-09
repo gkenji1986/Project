@@ -6,7 +6,7 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-            <!-- James' Changes -->
+            <!-- nav bar -->
 <nav>
         <ul>
         <li><a href="main.php">Back to Main Page</a></li> 
@@ -21,10 +21,11 @@
 				<div id="insert_poke">
 		   
 					<text>Select a Pokemon to delete from the Pokedex</text>
-
+					<!-- setting up post method from form-->
 						<form action='pokemon_delete_queries.php' method='POST'>
 									<select id = "pokemon" name = "pokemon">
 									   <?php
+									   //set up the server
 											$servername = "oniddb.cws.oregonstate.edu";
 											$username = "nakashig-db";
 											$password = "xXiNAmO8UFsRQc9d";
@@ -36,8 +37,10 @@
 											{
 											  die("Connection failed: " . $mysql->connect_error);
 											} 
+											//set up the select statement
 											$sql = "SELECT name FROM pokemon";
 											$result = $mysql->query($sql);
+											//display the results
 											while ($row = $result->fetch_assoc()) 
 											{
 											  unset($name);
@@ -55,9 +58,11 @@
 			<fieldset>
 				<div id="">
 					<text>Select a Type to delete from the Pokedex</text>
+					<!-- setting up post method from form-->
 						<form action='pokemon_delete_queries.php' method='POST'>
 								<select id = "type" name = "type">
 									<?php
+									//set up the server
 										$servername = "oniddb.cws.oregonstate.edu";
 										$username = "nakashig-db";
 										$password = "xXiNAmO8UFsRQc9d";
@@ -69,8 +74,10 @@
 										{
 										  die("Connection failed: " . $mysql->connect_error);
 										} 
+										//set up the select statement
 										$sql = "SELECT type_name FROM types";
 										$result = $mysql->query($sql);
+										//display the results
 										while ($row = $result->fetch_assoc()) 
 										{
 										  unset($type);
@@ -88,9 +95,11 @@
 			<fieldset>
 				<div id="">
 					<text>Select a Move to delete from the Pokedex</text>
+					<!-- setting up post method from form-->
 						<form action='pokemon_delete_queries.php' method='POST'>
 								<select id = "move" name = "move">
 									<?php
+									//set up the server information
 										$servername = "oniddb.cws.oregonstate.edu";
 										$username = "nakashig-db";
 										$password = "xXiNAmO8UFsRQc9d";
@@ -102,8 +111,10 @@
 										{
 										  die("Connection failed: " . $mysql->connect_error);
 										} 
+										//set up the select statement
 										$sql = "SELECT move_name FROM moves";
 										$result = $mysql->query($sql);
+										//display the results
 										while ($row = $result->fetch_assoc()) 
 										{
 										  unset($move);
@@ -120,9 +131,11 @@
 			<fieldset>
 				<div id="">
 					<text>Select a Route to delete from the Pokedex</text>
+					<!-- setting up post method from form-->
 						<form action='pokemon_delete_queries.php' method='POST'>
 								<select id = "route" name = "route">
 									<?php
+									//set up the server
 										$servername = "oniddb.cws.oregonstate.edu";
 										$username = "nakashig-db";
 										$password = "xXiNAmO8UFsRQc9d";
@@ -134,8 +147,10 @@
 										{
 										  die("Connection failed: " . $mysql->connect_error);
 										} 
+										//set up the select statement
 										$sql = "SELECT route_name FROM routes";
 										$result = $mysql->query($sql);
+										//display the results
 										while ($row = $result->fetch_assoc()) 
 										{
 										  unset($route);
@@ -152,10 +167,11 @@
 			<fieldset>
 				<div id="">
 					<text>Select a Trainer to delete from the Pokedex</text>
+					<!-- setting up post method from form-->
 						<form action='pokemon_delete_queries.php' method='POST'>
 								<select id = "trainer" name = "trainer">
 									<?php
-
+										//set up the server
 										$servername = "oniddb.cws.oregonstate.edu";
 										$username = "nakashig-db";
 										$password = "xXiNAmO8UFsRQc9d";
@@ -167,8 +183,10 @@
 										{
 										  die("Connection failed: " . $mysql->connect_error);
 										} 
+										//set up the select statement
 										$sql = "SELECT trainer_name FROM trainer";
 										$result = $mysql->query($sql);
+										//display the results
 										while ($row = $result->fetch_assoc()) 
 										{
 										  unset($name);
