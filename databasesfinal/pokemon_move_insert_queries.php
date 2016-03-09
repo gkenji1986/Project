@@ -55,7 +55,7 @@
 		$results = $stmt->fetch();
 		//set up sql with server information
 		$mysql2 = new mysqli($servername, $username, $password, $dbname);	
-		//get ready to send out the UPDATE statement, based on values provided by the php page													
+		//get ready to send out the SELECT statement, based on values provided by the php page													
 		$stmt = $mysql2->prepare('SELECT move_id FROM moves WHERE move_name = (?)');
 		$stmt->bind_param('s', $move);
 		$stmt->execute();
@@ -63,7 +63,7 @@
 		$results = $stmt->fetch();
 		//set up sql with server information
 		$mysql3 = new mysqli($servername, $username, $password, $dbname);	
-		//get ready to send out the UPDATE statement, based on values provided by the php page		
+		//get ready to send out the INSERT statement, based on values provided by the php page		
 		$stmt = $mysql3->prepare('INSERT INTO pokemon_moves (pid, mid) VALUES (?, ?)');
 		$stmt->bind_param('ss', $p_name, $p_move);
 
