@@ -1,23 +1,32 @@
+/**********************************
+HEADING
+***********************************/
 h1 {
 
 	font-family: Arial;
 	display: block;
 	position: center;
 }
-
+/**********************************
+TH
+***********************************/
 th {
 
 	font-family: Arial;
 	
 	
 }
-
+/**********************************
+table
+***********************************/
 table, td, th
 {
 	 border: 1px solid black;
 }
 
-
+/**********************************
+nav bar
+***********************************/
 nav {
  	
   font: Arial;
@@ -45,7 +54,9 @@ nav {
 nav , nav:visited {
   color: #DCDCDC;
 }
-
+/**********************************
+text input
+***********************************/
 input[type="text"] {
   display: block;
   margin: 0;
@@ -56,7 +67,10 @@ input[type="text"] {
   box-shadow: none;
   border-radius: none;
 }
-
+/**********************************
+button
+derived from http://stackoverflow.com/questions/14950238/can-you-style-html-form-buttons-with-css
+***********************************/
 
 .btn-primary {
 	-moz-box-shadow:inset 0px 39px 0px -24px #e67a73;
@@ -83,12 +97,20 @@ input[type="text"] {
 	position:relative;
 	top:1px;
 }
+/**********************************
+body
+***********************************/
+
 body {
 
 
 	background: #FDF3E7;
 }
-
+/**********************************
+select
+derived from information gathered at
+http://stackoverflow.com/questions/10185762/how-to-customized-select-element-through-css
+***********************************/
 select {
 
 
